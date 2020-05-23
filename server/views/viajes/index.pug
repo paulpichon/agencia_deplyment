@@ -1,0 +1,16 @@
+extends ../layout/index
+block contenido
+     main.container.mt-5
+          h1.text-center.mb-5 #{pagina}
+          //include ../layout/partials/viajes
+          .row.proximos-viajes
+               each viaje in viajes
+                    .col-md-6.col-lg-4.mb-4
+                         .card
+                              img(src=`img/destinos_${viaje.imagen}.jpg`, class="img-fluid", alt="")
+                              .card-body
+                                   h2=viaje.titulo
+                                        p #{viaje.fecha_ida} - #{viaje.fecha_vuelta} 
+                                        p $ #{viaje.precio}
+                                        p=viaje.descripcion.substr(0, 100)
+                                        a(href=`viajes/${viaje.id}`, class="btn btn-success btn-block") Mas informacion

@@ -1,0 +1,42 @@
+extends ../layout/index
+block slider
+     .slider
+          h1 Rio de Janeiro
+          em Aventura
+
+block contenido
+     main.container.mt-5
+          h2.text-center.mb-5 Sobre Nosotros
+          .row.mb-5
+               .col-md-6
+                    p Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ipsa perspiciatis impedit quas numquam vero alias officia rem recusandae sequi sit unde aut suscipit ipsum ex, commodi saepe dolorum aliquid quaerat!
+                    p Lorem ipsum, dolor sit amet consectetur adipisicing elit. Neque facere eius aliquid sed atque fugiat et obcaecati minima unde culpa adipisci, aliquam voluptates! Incidunt harum quos officia libero amet saepe.
+               .col-md-6
+                    img(src="/img/inicio_nosotros.jpg", class="img-fluid", alt="")
+          //include ../layout/partials/viajes   
+          h2.text-center.mb-5 Proximos Viajes       
+          .row.proximos-viajes
+               each viaje in viajes
+                    .col-md-6.col-lg-4.mb-4
+                         .card
+                              img(src=`img/destinos_${viaje.imagen}.jpg`, class="img-fluid", alt="")
+                              .card-body
+                                   h2=viaje.titulo
+                                        p #{viaje.fecha_ida} - #{viaje.fecha_vuelta} 
+                                        p $ #{viaje.precio}
+                                        p=viaje.descripcion.substr(0, 100)
+                                        a(href=`viajes/${viaje.id}`, class="btn btn-success btn-block") Mas informacion                 
+
+     .descuento   
+          .container
+               .row
+                    .col-md-6
+                         .contenido
+                              h3 5% de Descuento
+                              p.titulo Viaje a Canada
+                              p.fecha 20 de Marzo 2019 - 28 de Marzo de 2019
+                              p.precio $2, 500 USD
+     .container
+          h2.text-center.my-5 Testimoniales  
+          include ../layout/partials/testimoniales   
+          
